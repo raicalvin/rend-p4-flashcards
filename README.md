@@ -59,13 +59,7 @@ yarn start
 
 - Calvin S Rai - _Designer & Developer_ - [GitHub](https://github.com/raicalvin)
 
-## Resources
-
-This section should provide information about the images, video, and media files used in this project.
-
 ## Reference
-
-Provide a list of links to appropriate API documentation used in the project.
 
 - React Native - _React Native Official Documentation_ - [Documentation](https://facebook.github.io/react-native/)
 
