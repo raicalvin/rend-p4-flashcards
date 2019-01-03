@@ -67,9 +67,7 @@ This section should provide information about the images, video, and media files
 
 Provide a list of links to appropriate API documentation used in the project.
 
-- API Library 1 - _Description of documentation_ - [Documentation](https://github.com/raicalvin)
-- API Library 2 - _Description of documentation_ - [Documentation](https://github.com/raicalvin)
-- API Library 3 - _Description of documentation_ - [Documentation](https://github.com/raicalvin)
+- React Native - _React Native Official Documentation_ - [Documentation](https://facebook.github.io/react-native/)
 
 ## License
 
