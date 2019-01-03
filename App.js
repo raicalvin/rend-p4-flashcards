@@ -1,11 +1,17 @@
 import React from "react";
-import { View } from "react-native";
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import { View, Text } from "react-native";
+import {
+  createBottomTabNavigator,
+  createAppContainer,
+  createStackNavigator
+} from "react-navigation";
 import DeckView from "./components/DeckView";
 import AddDeck from "./components/AddDeck";
+import Deck from "./components/Deck";
 import { white, purple } from "./utils/colors";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 
+/* TAB NAVIGATOR */
 const Tabs = createBottomTabNavigator(
   {
     Decks: {
@@ -38,14 +44,35 @@ const Tabs = createBottomTabNavigator(
   }
 );
 
+/* STACK NAVIGATOR */
+const Stack = createStackNavigator({
+  Home: {
+    screen: Tabs,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Deck: {
+    screen: Deck,
+    navigationOptions: {
+      title: "Deck View",
+      headerTintColor: purple,
+      headerTitleSize: {
+        fontSize: 20
+      }
+    }
+  }
+});
+
 class App extends React.Component {
   render() {
     return (
       <View>
-        <Tabs />
+        <Stack />
+        <Text>TESTING</Text>
       </View>
     );
   }
 }
 
-export default createAppContainer(Tabs);
+export default createAppContainer(Stack);

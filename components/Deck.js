@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 class Deck extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>This is the individual DECK</Text>
       </View>
     );
