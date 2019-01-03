@@ -6,10 +6,16 @@ import AddDeck from "./components/AddDeck";
 
 const Tabs = createBottomTabNavigator({
   Decks: {
-    screen: DeckView
+    screen: DeckView,
+    navigationOptions: {
+      tabBarLabel: "Decks"
+    }
   },
   Add: {
-    screen: AddDeck
+    screen: AddDeck,
+    navigationOptions: {
+      tabBarLabel: "Add Deck"
+    }
   }
 });
 
