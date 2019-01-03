@@ -1,4 +1,3 @@
-export const purple = "#292477";
 export const gray = "#757575";
 export const white = "#fff";
 export const red = "#FF3B30";
@@ -9,4 +8,4 @@ export const pink = "#FF2C55";
 export const yellow = "#FFCB02";
 export const green = "#4CD965";
 export const teal = "#5AC8FA";
-export const purple = "#5857D6"
+export const purple = "#5857D6";
