@@ -1,25 +1,26 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { View } from "react-native";
+import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import DeckView from "./components/DeckView";
+import AddDeck from "./components/AddDeck";
 
-export default class App extends React.Component {
+const Tabs = createBottomTabNavigator({
+  Decks: {
+    screen: DeckView
+  },
+  Add: {
+    screen: AddDeck
+  }
+});
+
+class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.view}>
-          Open up App.js to start working on your app!
-        </Text>
-        <DeckView />
+      <View>
+        <Tabs />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
+export default createAppContainer(Tabs);

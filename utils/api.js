@@ -1,8 +1,13 @@
-// Todo Thursday
-// Create fake data for the decks
-// implement the api functions to store and export the data
-// import the decks into the DeckView
-// Make the navigation components
+/* TODO List
+
+    - Create initial data object for decks inside API
+    - Implement the API functions to store and export the data
+    - Import the decks into the DeckView
+    - Make the navigation components for adding deck, viewing decklist, and about section
+    - Style these initial components
+    - Hook up Redux so that we can add and delete decks
+    - AsyncStorage so that we can get initial decks or the decks that the user created
+*/
 
 const initialDecks = {
   Physics: {
@@ -73,4 +78,8 @@ const initialDecks = {
       }
     ]
   }
+};
+
+export const getInitialDecks = () => {
+  return initialDecks;
 };
