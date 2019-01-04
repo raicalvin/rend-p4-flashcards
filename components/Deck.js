@@ -6,6 +6,7 @@ class Deck extends Component {
   render() {
     const deck = this.props.navigation.state.params.entryId;
     const decks = getInitialDecks();
+    console.log(deck);
     return (
       <View style={styles.container}>
         <Text>{decks[deck].name}</Text>

@@ -4,10 +4,12 @@ import { saveDeckTitle } from "../utils/api";
 import { addDeck } from "../actions";
 
 class AddDeck extends Component {
+  // Keep track of the input name for the deck
   state = {
     text: ""
   };
 
+  // Dispatch an action to add the new Deck Name to the state
   submitDeckName = () => {
     const { text } = this.state;
     saveDeckTitle(text);
