@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 7,
     height: 45,
+    margin: 5,
     width: 170
   },
   submitBtnText: {

@@ -11,7 +11,7 @@ class MainButton extends Component {
           { backgroundColor: this.props.color }
         ]}
       >
-        <Text style={style.submitBtnText}>{this.props.text}</Text>
+        <Text style={this.props.styles.submitBtnText}>{this.props.text}</Text>
       </TouchableOpacity>
     );
   }
