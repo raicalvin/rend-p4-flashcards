@@ -4,6 +4,7 @@ import { getInitialDecks } from "../utils/api";
 import { connect } from "react-redux";
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions/index";
+import { AppLoading } from "expo";
 
 class DeckView extends Component {
   state = {
@@ -12,13 +13,17 @@ class DeckView extends Component {
 
   componentDidMount() {
     getDecks()
-      .then(decks => this.props.dispatch(receiveDecks(decks)))
+      .then(decks => this.props.receiveAllDecks(decks))
       .then(() => this.setState(() => ({ ready: true })));
   }
 
   render() {
-    const decks = getInitialDecks();
+    if (!this.state.ready) {
+      return <AppLoading />;
+    }
+    const { decks } = this.props;
     console.log("The props are ", this.props);
+    console.log("The Decks are ", decks);
 
     return (
       <View style={styles.container}>
@@ -55,14 +60,17 @@ const styles = StyleSheet.create({
   }
 });
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     receiveAllDecks: decks => dispatch(receiveDecks)
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    receiveAllDecks: decks => dispatch(receiveDecks(decks))
+  };
+}
 
 function mapStateToProps(decks) {
   return decks;
 }
 
-export default connect(mapStateToProps)(DeckView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DeckView);

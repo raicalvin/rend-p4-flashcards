@@ -93,8 +93,10 @@ export const getInitialDecks = () => {
 export function getDecks(decks) {
   return AsyncStorage.getItem(FLASHCARDS_KEY).then(result => {
     if (result) {
+      // If there is a result, return it
       return JSON.parse(result);
     } else {
+      // If there isn't a result, set the intial decks as storage and then return it
       AsyncStorage.setItem(FLASHCARDS_KEY, JSON.stringify(initialDecks));
       return initialDecks;
     }
