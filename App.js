@@ -10,6 +10,9 @@ import AddDeck from "./components/AddDeck";
 import Deck from "./components/Deck";
 import { white, purple } from "./utils/colors";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Provider } from "react-redux";
+import reducer from "./reducers";
+import { createStore } from "redux";
 
 /* TAB NAVIGATOR */
 const Tabs = createBottomTabNavigator(
@@ -64,15 +67,14 @@ const Stack = createStackNavigator({
   }
 });
 
-class App extends React.Component {
+const AppContainer = createAppContainer(Stack);
+
+export default class App extends React.Component {
   render() {
     return (
-      <View>
-        <Stack />
-        <Text>TESTING</Text>
-      </View>
+      <Provider store={createStore(reducer)}>
+        <AppContainer />
+      </Provider>
     );
   }
 }
-
-export default createAppContainer(Stack);

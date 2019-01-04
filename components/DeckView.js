@@ -1,11 +1,24 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 import { getInitialDecks } from "../utils/api";
+import { connect } from "react-redux";
+import { getDecks } from "../utils/api";
+import { receiveDecks } from "../actions/index";
 
 class DeckView extends Component {
+  state = {
+    ready: false
+  };
+
+  componentDidMount() {
+    getDecks()
+      .then(decks => this.props.dispatch(receiveDecks(decks)))
+      .then(() => this.setState(() => ({ ready: true })));
+  }
+
   render() {
     const decks = getInitialDecks();
-    console.log(decks);
+    console.log("The props are ", this.props);
 
     return (
       <View style={styles.container}>
@@ -42,4 +55,14 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DeckView;
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     receiveAllDecks: decks => dispatch(receiveDecks)
+//   };
+// }
+
+function mapStateToProps(decks) {
+  return decks;
+}
+
+export default connect(mapStateToProps)(DeckView);

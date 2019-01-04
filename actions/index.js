@@ -16,7 +16,7 @@ export const DELETE_DECK = "DELETE_DECK"; // Delete a specific deck
 
 // ACTION CREATORS
 
-export function getDecks(decks) {
+export function receiveDecks(decks) {
   return {
     type: GET_DECKS,
     decks
