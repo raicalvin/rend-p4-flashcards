@@ -6,6 +6,8 @@ import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions/index";
 import { AppLoading } from "expo";
 
+// This component displays the list of Decks
+
 class DeckView extends Component {
   state = {
     ready: false
@@ -24,8 +26,8 @@ class DeckView extends Component {
     }
     // const decks = getInitialDecks();
     const { decks } = this.props;
-    console.log("The props are ", this.props);
-    console.log("The decks are ", decks);
+    console.log("[DeckView] The props are ", this.props);
+    console.log("[DeckView] The decks are ", decks);
 
     return (
       <View style={styles.container}>

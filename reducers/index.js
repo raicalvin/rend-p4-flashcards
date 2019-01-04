@@ -9,9 +9,11 @@ import {
 function decks(state = {}, action) {
   switch (action.type) {
     case CREATE_DECK:
+      console.log("[reducers/index.js] The state is:", state);
+      console.log("[reducers/index.js] The action is:", action);
       return {
         ...state,
-        [action.deckId]: action.deck
+        [action.deck]: { name: action.deck, questions: [] }
       };
     case ADD_CARD:
     case GET_DECKS:

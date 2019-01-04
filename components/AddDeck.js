@@ -2,30 +2,37 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Button, TextInput } from "react-native";
 import { saveDeckTitle } from "../utils/api";
 import { addDeck } from "../actions";
+import { connect } from "react-redux";
 
 class AddDeck extends Component {
   // Keep track of the input name for the deck
   state = {
-    text: ""
+    deckText: ""
   };
 
   // Dispatch an action to add the new Deck Name to the state
   submitDeckName = () => {
-    const { text } = this.state;
-    saveDeckTitle(text);
-    this.props.dispatch(addDeck(text));
-    this.props.navigation.navigate("DeckView");
+    const { deckText } = this.state;
+    this.props.dispatch(addDeck(deckText));
+    this.setState({ deckText: "" });
+    this.props.navigation.navigate("Deck", { entryId: deckText });
+    saveDeckTitle(deckText);
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>What is the new Decks name?</Text>
+        <Text style={styles.title}>What is the new Decks name?</Text>
         <TextInput
-          onChangeText={text => this.setState({ text: text })}
-          value={this.state.text}
+          onChangeText={text => this.setState({ deckText: text })}
+          value={this.state.deckText}
+          style={styles.input}
         />
-        <Button onPress={this.submitDeckName} title="Submit" />
+        <Button
+          onPress={this.submitDeckName}
+          title="Submit"
+          style={styles.submitBtn}
+        />
       </View>
     );
   }
@@ -37,7 +44,33 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
+  },
+  input: {
+    width: 200,
+    height: 44,
+    padding: 8,
+    borderWidth: 1,
+    borderColor: "#757575",
+    margin: 50,
+    borderRadius: 8
+  },
+  title: {
+    fontSize: 30,
+    color: "#333"
+  },
+  submitBtn: {
+    borderWidth: 0.5,
+    borderColor: "#d6d7da",
+    padding: 10,
+    borderRadius: 7,
+    overflow: "hidden"
   }
 });
 
-export default AddDeck;
+function mapStateToProps(decks) {
+  return {
+    decks
+  };
+}
+
+export default connect(mapStateToProps)(AddDeck);
