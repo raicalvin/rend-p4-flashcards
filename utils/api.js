@@ -9,6 +9,12 @@
     - AsyncStorage so that we can get initial decks or the decks that the user created
 */
 
+import { AsyncStorage } from "react-native";
+
+// Key used to get the same data from the phone every time the app runs
+// This is just where we will persist this information
+const FLASHCARDS_KEY = "flashcards: decks";
+
 const initialDecks = {
   Physics: {
     name: "Physics",
@@ -83,3 +89,14 @@ const initialDecks = {
 export const getInitialDecks = () => {
   return initialDecks;
 };
+
+export function getDecks(decks) {
+  return AsyncStorage.getItem(FLASHCARDS_KEY).then(result => {
+    if (result) {
+      return JSON.parse(result);
+    } else {
+      AsyncStorage.setItem(FLASHCARDS_KEY, JSON.stringify(initialDecks));
+      return initialDecks;
+    }
+  });
+}
