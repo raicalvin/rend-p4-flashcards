@@ -86,6 +86,7 @@ const initialDecks = {
   }
 };
 
+// getData() in tut
 export const getInitialDecks = () => {
   return initialDecks;
 };
@@ -101,4 +102,16 @@ export function getDecks(decks) {
       return initialDecks;
     }
   });
+}
+
+export function saveDeckTitle() {
+  return AsyncStorage.getItem(
+    FLASHCARDS_KEY,
+    JSON.stringify({
+      [name]: {
+        name: name,
+        questions: []
+      }
+    })
+  );
 }

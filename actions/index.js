@@ -23,11 +23,10 @@ export function receiveDecks(decks) {
   };
 }
 
-export function addDeck(deck, deckId) {
+export function addDeck(deck) {
   return {
     type: CREATE_DECK,
-    deck,
-    deckId
+    deck
   };
 }
 

@@ -21,7 +21,8 @@ class DeckView extends Component {
     if (!this.state.ready) {
       return <AppLoading />;
     }
-    const { decks } = this.props;
+    const decks = getInitialDecks();
+    // const { decks } = this.props;
     console.log("The props are ", this.props);
     console.log("The Decks are ", decks);
 
@@ -29,7 +30,6 @@ class DeckView extends Component {
       <View style={styles.container}>
         {Object.keys(decks).map(deck => {
           const { name, questions } = decks[deck];
-          console.log(name);
           return (
             <View key={deck} style={styles.test}>
               <Text>{name}</Text>
@@ -67,6 +67,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(decks) {
+  console.log("Hellooooo: ", decks);
+  console.log("The stats is ", this.state);
   return decks;
 }
 

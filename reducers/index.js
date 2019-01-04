@@ -6,7 +6,7 @@ import {
   DELETE_DECK
 } from "../actions/index";
 
-function deck(state = {}, action) {
+function decks(state = {}, action) {
   switch (action.type) {
     case CREATE_DECK:
       return {
@@ -26,4 +26,4 @@ function deck(state = {}, action) {
   }
 }
 
-export default deck;
+export default decks;

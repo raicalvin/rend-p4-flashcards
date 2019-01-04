@@ -1,11 +1,29 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Button, TextInput } from "react-native";
+import { saveDeckTitle } from "../utils/api";
+import { addDeck } from "../actions";
 
 class AddDeck extends Component {
+  state = {
+    text: ""
+  };
+
+  submitDeckName = () => {
+    const { text } = this.state;
+    saveDeckTitle(text);
+    this.props.dispatch(addDeck(text));
+    this.props.navigation.navigate("DeckView");
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Sup. Here you can add a deck</Text>
+        <Text>What is the new Decks name?</Text>
+        <TextInput
+          onChangeText={text => this.setState({ text: text })}
+          value={this.state.text}
+        />
+        <Button onPress={this.submitDeckName} title="Submit" />
       </View>
     );
   }
