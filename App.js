@@ -15,6 +15,7 @@ import reducer from "./reducers";
 import { createStore } from "redux";
 import AddCard from "./components/AddCard";
 import { Constants } from "expo";
+import Quiz from "./components/Quiz";
 
 /* STATUS BAR COMPONENT */
 function TopStatusBar({ backgroundColor, ...props }) {
@@ -80,6 +81,16 @@ const Stack = createStackNavigator({
     screen: AddCard,
     navigationOptions: {
       title: "New Question",
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple
+      }
+    }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      title: "Quiz",
       headerTintColor: white,
       headerStyle: {
         backgroundColor: purple
