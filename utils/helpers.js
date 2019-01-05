@@ -51,10 +51,10 @@ export function clearLocalNotification() {
 
 export const getCardsLength = questions => {
   if (questions.length === 0) {
-    return <Text>0 Cards</Text>;
+    return <Text>( 0 Cards )</Text>;
   } else if (questions.length > 1) {
-    return <Text>{questions.length} cards</Text>;
+    return <Text>( {questions.length} cards )</Text>;
   } else {
-    return <Text>1 card</Text>;
+    return <Text>( 1 card )</Text>;
   }
 };

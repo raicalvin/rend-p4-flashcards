@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions/index";
 import { AppLoading } from "expo";
-import { orange, white } from "../utils/colors";
+import { orange, white, purple, pink, black } from "../utils/colors";
 import { getCardsLength } from "../utils/helpers";
 
 // This component displays the list of Decks
@@ -38,7 +38,7 @@ class DeckView extends Component {
           return (
             <View key={deck} style={styles.card}>
               <Text style={styles.cardText}>{name}</Text>
-              <Text style={styles.cardText}>
+              <Text style={styles.cardSubText}>
                 {questions ? getCardsLength(questions) : null}
               </Text>
               <Button
@@ -67,21 +67,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: orange,
+    backgroundColor: black,
     margin: 8,
-    height: 200,
-    borderRadius: 10,
+    height: 120,
+    borderRadius: 20,
     shadowColor: "rgba(0, 0, 0, 0.34)",
     shadowOffset: {
       width: 0,
       height: 3
     },
     shadowRadius: 4,
-    shadowOpacity: 1
+    shadowOpacity: 1,
+    padding: 16
   },
   cardText: {
-    fontSize: 20,
-    color: white
+    fontSize: 25,
+    color: white,
+    marginBottom: 8
+  },
+  cardSubText: {
+    fontSize: 14,
+    color: pink
   },
   cardBtn: {
     flex: 1,
