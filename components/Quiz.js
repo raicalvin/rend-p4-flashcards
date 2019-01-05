@@ -15,8 +15,14 @@ import QuizInfo from "./QuizInfo";
 
 class Quiz extends Component {
   state = {
-    questionNumber: 0
+    questionNumber: 0,
+    showQuestion: false
   };
+
+  showAnswer = () =>
+    !this.state.showQuestion
+      ? this.setState({ showQuestion: true })
+      : this.setState({ showQuestion: false });
 
   render() {
     const decks = this.props.decks;
@@ -29,10 +35,31 @@ class Quiz extends Component {
           <Text style={styles.questions}>
             {number} / {decks[currentDeck].questions.length}
           </Text>
-          <Text style={styles.mainText}>
-            {decks[currentDeck].questions[questionNumber].question}
-          </Text>
-          <QuizInfo style={styles.answer} text="Show Answer" />
+
+          {!this.state.showQuestion ? (
+            <Text style={styles.mainText}>
+              {decks[currentDeck].questions[questionNumber].question}
+            </Text>
+          ) : (
+            <Text style={styles.mainText}>
+              {decks[currentDeck].questions[questionNumber].answer}
+            </Text>
+          )}
+
+          {!this.state.showQuestion ? (
+            <QuizInfo
+              style={styles.answer}
+              text="Show Answer"
+              onPress={this.showAnswer}
+            />
+          ) : (
+            <QuizInfo
+              style={styles.answer}
+              text="Show Question"
+              onPress={this.showAnswer}
+            />
+          )}
+
           <MainButton color={green} styles={styles} text="Correct" />
           <MainButton color={red} styles={styles} text="Incorrect" />
         </View>
