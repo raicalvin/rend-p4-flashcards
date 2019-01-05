@@ -7,7 +7,16 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView
 } from "react-native";
-import { orange, white, purple, red, green } from "../utils/colors";
+import {
+  orange,
+  white,
+  purple,
+  red,
+  green,
+  blue,
+  black,
+  lightPurple
+} from "../utils/colors";
 import SubmitButton from "./SubmitButton";
 import { connect } from "react-redux";
 import MainButton from "./MainButton";
@@ -83,20 +92,20 @@ class Quiz extends Component {
               {decks[currentDeck].questions.length} correct!
             </Text>
             {this.state.correctAnswers > this.state.incorrectAnswer ? (
-              <Text style={{ fontSize: 90 }}>:]</Text>
+              <Text style={{ fontSize: 50, margin: 12 }}>🤓</Text>
             ) : (
-              <Text style={{ fontSize: 90 }}>:[</Text>
+              <Text style={{ fontSize: 50, margin: 12 }}>😭</Text>
             )}
 
             <MainButton
               styles={styles}
-              text="Try Again"
+              text="Restart"
               color={red}
               onPress={this.restart}
             />
             <MainButton
               styles={styles}
-              text="Go Back"
+              text="Home"
               color={green}
               onPress={this.home}
             />
@@ -109,7 +118,7 @@ class Quiz extends Component {
       <View style={styles.container}>
         <View style={styles.card}>
           <Text style={styles.questions}>
-            {number} / {decks[currentDeck].questions.length}
+            Question {number} of {decks[currentDeck].questions.length}
           </Text>
 
           {!this.state.showQuestion ? (
@@ -162,50 +171,46 @@ const styles = StyleSheet.create({
   },
   iosBtn: {
     padding: 10,
-    borderRadius: 7,
+    borderRadius: 30,
     height: 45,
     margin: 5,
-    width: 160
+    width: 200
   },
   submitBtnText: {
     color: white,
-    fontSize: 26,
+    fontSize: 22,
     textAlign: "center"
   },
   questions: {
-    top: 0,
-    alignSelf: "flex-start",
-    left: 0,
-    color: white,
-    fontSize: 20,
-    margin: 5,
-    position: "absolute"
+    color: lightPurple,
+    marginBottom: 10
   },
   answer: {
-    color: white,
-    fontSize: 20,
+    color: blue,
+    fontSize: 18,
     margin: 20
   },
   card: {
-    flex: 1,
+    height: 500,
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
-    backgroundColor: "orange",
+    backgroundColor: black,
     alignSelf: "stretch",
-    borderRadius: 10,
+    borderRadius: 20,
     shadowColor: "rgba(0, 0, 0, 0.34)",
     shadowOffset: {
       width: 0,
-      height: 3
+      height: 0
     },
     shadowRadius: 4,
-    shadowOpacity: 1
+    shadowOpacity: 1,
+    margin: 10
   },
   mainText: {
-    fontSize: 40,
+    fontSize: 25,
     color: white,
-    marginTop: 40,
+    marginTop: 0,
     textAlign: "center"
   }
 });
