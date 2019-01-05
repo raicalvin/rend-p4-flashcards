@@ -16,6 +16,7 @@ import { createStore } from "redux";
 import AddCard from "./components/AddCard";
 import { Constants } from "expo";
 import Quiz from "./components/Quiz";
+import { setLocalNotification } from "./utils/helpers";
 
 /* STATUS BAR COMPONENT */
 function TopStatusBar({ backgroundColor, ...props }) {
@@ -102,6 +103,10 @@ const Stack = createStackNavigator({
 const AppContainer = createAppContainer(Stack);
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
   render() {
     return (
       <Provider store={createStore(reducer)}>
