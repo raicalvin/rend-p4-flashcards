@@ -52,10 +52,10 @@ const styles = StyleSheet.create({
   },
   iosBtn: {
     padding: 10,
-    borderRadius: 7,
+    borderRadius: 30,
     height: 45,
     margin: 5,
-    width: 170
+    width: 200
   },
   submitBtnText: {
     color: white,

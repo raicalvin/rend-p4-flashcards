@@ -4,7 +4,7 @@ import { saveDeckTitle } from "../utils/api";
 import { addDeck } from "../actions";
 import { connect } from "react-redux";
 import SubmitButton from "./SubmitButton";
-import { orange } from "../utils/colors";
+import { orange, blue, white, black } from "../utils/colors";
 
 class AddDeck extends Component {
   // Keep track of the input name for the deck
@@ -24,13 +24,16 @@ class AddDeck extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>What is the new Decks name?</Text>
+        <Text style={styles.title}>Enter a Deck name:</Text>
         <TextInput
           onChangeText={text => this.setState({ deckText: text })}
           value={this.state.deckText}
           style={styles.input}
         />
-        <SubmitButton style={styles.submitBtn} onPress={this.submitDeckName} />
+        <SubmitButton
+          style={styles.submitButton}
+          onPress={this.submitDeckName}
+        />
       </View>
     );
   }
@@ -44,26 +47,29 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   input: {
-    width: 200,
+    width: 300,
     height: 44,
     padding: 8,
     borderWidth: 1,
     borderColor: "#757575",
-    margin: 50,
-    borderRadius: 8
+    margin: 25,
+    borderRadius: 30
   },
   title: {
-    fontSize: 30,
+    fontSize: 20,
     color: "#333",
     textAlign: "center"
   },
-  submitBtn: {
-    borderWidth: 0.5,
-    borderColor: "#6d67da",
+  submitButton: {
     padding: 10,
-    backgroundColor: orange,
-    borderRadius: 7,
-    overflow: "hidden"
+    backgroundColor: blue,
+    borderRadius: 22.5,
+    overflow: "hidden",
+    height: 45,
+    width: 200,
+    textAlign: "center",
+    fontSize: 22,
+    color: white
   }
 });
 

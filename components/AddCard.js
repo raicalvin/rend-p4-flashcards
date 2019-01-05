@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavigationActions } from "react-navigation";
-import { orange, white } from "../utils/colors";
+import { orange, white, blue } from "../utils/colors";
 import { addCardToDeck } from "../utils/api";
 import { connect } from "react-redux";
 import { addCard } from "../actions";
@@ -94,12 +94,15 @@ const styles = StyleSheet.create({
     color: "#333"
   },
   submitBtn: {
-    borderWidth: 0.5,
-    borderColor: "#6d67da",
     padding: 10,
-    backgroundColor: orange,
-    borderRadius: 7,
-    overflow: "hidden"
+    backgroundColor: blue,
+    borderRadius: 22.5,
+    overflow: "hidden",
+    height: 45,
+    width: 200,
+    textAlign: "center",
+    fontSize: 22,
+    color: white
   },
   input: {
     width: 250,
