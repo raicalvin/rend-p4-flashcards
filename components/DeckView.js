@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Button, FlatList } from "react-native";
+import { StyleSheet, View, Text, Button, ScrollView } from "react-native";
 import { getInitialDecks } from "../utils/api";
 import { connect } from "react-redux";
 import { getDecks } from "../utils/api";
@@ -32,7 +32,7 @@ class DeckView extends Component {
     console.log("[DeckView] The decks are ", decks);
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {Object.keys(decks).map(deck => {
           const { name, questions } = decks[deck];
           return (
@@ -51,7 +51,7 @@ class DeckView extends Component {
             </View>
           );
         })}
-      </View>
+      </ScrollView>
     );
   }
 }
