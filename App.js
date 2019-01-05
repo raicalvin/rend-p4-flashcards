@@ -22,7 +22,9 @@ import InfoScreen from "./components/InfoScreen";
 /* STATUS BAR COMPONENT */
 function TopStatusBar({ backgroundColor, ...props }) {
   return (
-    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
+    <View
+      style={{ backgroundColor, height: Constants.statusBarHeight, margin: 0 }}
+    >
       <StatusBar translucent backgroundColor={backgroundColor} {...props} />
     </View>
   );
@@ -115,7 +117,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducer)}>
-        <TopStatusBar backgroundColor={blue} barStyle="light-content" />
+        {/* <TopStatusBar backgroundColor={white} barStyle="light-content" /> */}
         <AppContainer />
       </Provider>
     );

@@ -4,7 +4,7 @@ import { getInitialDecks } from "../utils/api";
 import { connect } from "react-redux";
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions/index";
-import { AppLoading } from "expo";
+import { AppLoading, Constants } from "expo";
 import { orange, white, purple, pink, black } from "../utils/colors";
 import { getCardsLength } from "../utils/helpers";
 
@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignSelf: "stretch",
-    padding: 5
+    padding: 5,
+    marginTop: Constants.statusBarHeight
   },
   card: {
     flex: 1,
