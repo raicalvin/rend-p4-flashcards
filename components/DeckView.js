@@ -6,6 +6,7 @@ import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions/index";
 import { AppLoading } from "expo";
 import { orange, white } from "../utils/colors";
+import { getCardsLength } from "../utils/helpers";
 
 // This component displays the list of Decks
 
@@ -37,7 +38,9 @@ class DeckView extends Component {
           return (
             <View key={deck} style={styles.card}>
               <Text style={styles.cardText}>{name}</Text>
-              <Text style={styles.cardText}>{questions.length}</Text>
+              <Text style={styles.cardText}>
+                {questions ? getCardsLength(questions) : null}
+              </Text>
               <Button
                 onPress={() =>
                   this.props.navigation.navigate("Deck", { entryId: deck })
