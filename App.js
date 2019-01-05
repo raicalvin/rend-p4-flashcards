@@ -13,6 +13,7 @@ import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
 import { createStore } from "redux";
+import AddCard from "./components/AddCard";
 
 /* TAB NAVIGATOR */
 const Tabs = createBottomTabNavigator(
@@ -62,6 +63,16 @@ const Stack = createStackNavigator({
       headerTintColor: purple,
       headerTitleSize: {
         fontSize: 20
+      }
+    }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      title: "New Question",
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple
       }
     }
   }

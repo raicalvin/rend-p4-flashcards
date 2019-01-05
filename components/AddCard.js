@@ -9,36 +9,59 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Text
 } from "react-native";
 
-class AddCard extends Componet {
+class AddCard extends Component {
   state = {
     questionText: "",
     answerText: "",
     correctAnswerText: ""
   };
 
-  submitCard = () => {};
+  submitCard = deck => {
+    console.log("This card will be added to this deck: ", deck);
+    const { questionText, answerText, correctAnswerText } = this.state;
+    /*
+        We need to do four things:
+        1. Dispatch an action to add data to reducer
+        2. Add card to database
+        3. Set state back to empty strings
+        4. Navigate back
+      */
+    this.props.dispatch(
+      addCard({
+        question: questionText,
+        answer: answerText,
+        correctAnswer: correctAnswerText,
+        deck
+      })
+    );
+    addCardToDeck(deck, { questionText, answerText, correctAnswerText });
+    this.setState({ questionText: "", answerText: "", correctAnswerText: "" });
+    this.props.navigation.dispatch(NavigationActions.back({ key: null }));
+  };
 
   render() {
+    console.log(this.state);
     const deckName = this.props.navigation.state.params.entryId;
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View style={styles.container}>
-          <Text style={styles.title} />
+          <Text style={styles.title}>Question:</Text>
           <TextInput
             style={styles.input}
             onChangeText={text => this.setState({ questionText: text })}
             value={this.state.questionText}
           />
-          <Text />
+          <Text style={styles.title}>Answer:</Text>
           <TextInput
             style={styles.input}
             onChangeText={text => this.setState({ answerText: text })}
             value={this.state.answerText}
           />
-          <Text />
+          <Text style={styles.title}>True or False:</Text>
           <TextInput
             style={styles.input}
             onChangeText={text => this.setState({ correctAnswerText: text })}
@@ -65,7 +88,7 @@ const styles = StyleSheet.create({
   submitBtnText: {
     color: white,
     fontSize: 22,
-    testAlign: "center"
+    textAlign: "center"
   },
   title: {
     fontSize: 30,
@@ -89,3 +112,5 @@ const styles = StyleSheet.create({
     borderRadius: 7
   }
 });
+
+export default connect()(AddCard);

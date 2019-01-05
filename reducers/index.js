@@ -16,6 +16,21 @@ function decks(state = {}, action) {
         [action.deck]: { name: action.deck, questions: [] }
       };
     case ADD_CARD:
+      console.log(
+        "[reducers/index.js] The state is for adding a card: ",
+        state
+      );
+      console.log("The action is ", action);
+      return {
+        ...state,
+        [action.card.deck]: {
+          name: action.card.deck,
+          questions: state[action.card.deck].questions.concat({
+            question: action.card.question,
+            answer: action.card.answer
+          })
+        }
+      };
     case GET_DECKS:
       return {
         ...state,

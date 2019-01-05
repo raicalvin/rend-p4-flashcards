@@ -15,6 +15,9 @@ import { AsyncStorage } from "react-native";
 // This is just where we will persist this information
 const FLASHCARDS_KEY = "flashcards: decks";
 
+// Use this to clear all AsyncStorage data when needed (just uncomment and refresh app)
+// AsyncStorage.clear();
+
 const initialDecks = {
   Physics: {
     name: "Physics",
