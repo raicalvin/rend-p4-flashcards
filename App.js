@@ -48,6 +48,15 @@ const Tabs = createBottomTabNavigator(
           <FontAwesome name="plus-square" size={20} color={tintColor} />
         )
       }
+    },
+    InfoScreen: {
+      screen: InfoScreen,
+      navigationOptions: {
+        tabBarLabel: "About",
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome name="info-circle" size={20} color={tintColor} />
+        )
+      }
     }
   },
   {
