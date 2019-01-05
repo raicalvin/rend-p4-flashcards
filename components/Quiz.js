@@ -55,11 +55,56 @@ class Quiz extends Component {
     });
   };
 
+  restart = () => {
+    this.setState({
+      questionNumber: 0,
+      showQuestion: false,
+      correctAnswers: 0,
+      incorrectAnswer: 0
+    });
+  };
+
+  home = () => {
+    this.props.navigation.dispatch(NavigationActions.back({ key: null }));
+  };
+
   render() {
     const decks = this.props.decks;
     const currentDeck = this.props.navigation.state.params.entryId;
     const questionNumber = this.state.questionNumber;
     const number = this.state.questionNumber + 1;
+
+    if (questionNumber === decks[currentDeck].questions.length) {
+      return (
+        <View style={styles.container}>
+          <View style={styles.card}>
+            <Text style={styles.mainText}>
+              You got {this.state.correctAnswers} out of{" "}
+              {decks[currentDeck].questions.length} correct!
+            </Text>
+            {this.state.correctAnswers > this.state.incorrectAnswer ? (
+              <Text style={{ fontSize: 90 }}>:]</Text>
+            ) : (
+              <Text style={{ fontSize: 90 }}>:[</Text>
+            )}
+
+            <MainButton
+              styles={styles}
+              text="Try Again"
+              color={red}
+              onPress={this.restart}
+            />
+            <MainButton
+              styles={styles}
+              text="Go Back"
+              color={green}
+              onPress={this.home}
+            />
+          </View>
+        </View>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.card}>
