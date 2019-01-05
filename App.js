@@ -8,7 +8,7 @@ import {
 import DeckView from "./components/DeckView";
 import AddDeck from "./components/AddDeck";
 import Deck from "./components/Deck";
-import { white, purple } from "./utils/colors";
+import { white, purple, blue, black } from "./utils/colors";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
@@ -61,7 +61,7 @@ const Tabs = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: purple,
+      activeTintColor: blue,
       labelStyle: {
         fontSize: 15,
         backgroundColor: white
@@ -82,7 +82,7 @@ const Stack = createStackNavigator({
     screen: Deck,
     navigationOptions: {
       title: "Deck View",
-      headerTintColor: purple,
+      headerTintColor: blue,
       headerTitleSize: {
         fontSize: 20
       }
@@ -110,6 +110,7 @@ const Stack = createStackNavigator({
   }
 });
 
+/* APP CONTAINER FOR STACK NAVIGATOR */
 const AppContainer = createAppContainer(Stack);
 
 export default class App extends React.Component {
@@ -120,7 +121,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducer)}>
-        <TopStatusBar backgroundColor={purple} barStyle="light-content" />
+        <TopStatusBar backgroundColor={blue} barStyle="light-content" />
         <AppContainer />
       </Provider>
     );

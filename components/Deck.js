@@ -12,6 +12,7 @@ class Deck extends Component {
     const { decks } = this.props;
     console.log("[Deck] The open Deck is: ", deck);
     const questions = decks[deck].questions;
+
     return (
       <View style={styles.container}>
         <View style={styles.card}>
