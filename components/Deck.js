@@ -4,17 +4,21 @@ import { getInitialDecks } from "../utils/api";
 import { connect } from "react-redux";
 import MainButton from "./MainButton";
 import { white, red, purple, orange } from "../utils/colors";
+import { getCardsLength } from "../utils/helpers";
 
 class Deck extends Component {
   render() {
     const deck = this.props.navigation.state.params.entryId;
     const { decks } = this.props;
     console.log("[Deck] The open Deck is: ", deck);
+    const questions = decks[deck].questions;
     return (
       <View style={styles.container}>
         <View style={styles.card}>
           <Text style={styles.mainText}>{decks[deck].name}</Text>
-          <Text style={styles.subText}>{decks[deck].questions.length}</Text>
+          <Text style={styles.subText}>
+            {questions ? getCardsLength(questions) : null}
+          </Text>
           <MainButton
             styles={styles}
             color={purple}
