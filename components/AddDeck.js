@@ -42,7 +42,6 @@ class AddDeck extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
   },
@@ -51,13 +50,12 @@ const styles = StyleSheet.create({
     height: 44,
     padding: 8,
     borderWidth: 1,
-    borderColor: "#757575",
     margin: 25,
     borderRadius: 30
   },
   title: {
-    fontSize: 20,
-    color: "#333",
+    fontSize: 25,
+    color: black,
     textAlign: "center"
   },
   submitButton: {

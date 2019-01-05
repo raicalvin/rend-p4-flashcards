@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { getInitialDecks } from "../utils/api";
 import { connect } from "react-redux";
 import MainButton from "./MainButton";
-import { white, red, purple, orange } from "../utils/colors";
+import { white, red, purple, blue, black, pink } from "../utils/colors";
 import { getCardsLength } from "../utils/helpers";
 
 class Deck extends Component {
@@ -22,7 +22,7 @@ class Deck extends Component {
           </Text>
           <MainButton
             styles={styles}
-            color={purple}
+            color={blue}
             text={"Add Card"}
             onPress={() =>
               this.props.navigation.navigate("AddCard", { entryId: deck })
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   card: {
-    flex: 1,
+    height: 300,
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
-    backgroundColor: "orange",
+    backgroundColor: black,
     alignSelf: "stretch",
-    borderRadius: 10,
+    borderRadius: 20,
     shadowColor: "rgba(0, 0, 0, 0.34)",
     shadowOffset: {
       width: 0,
@@ -79,13 +79,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 1
   },
   mainText: {
-    fontSize: 40,
-    color: white
-  },
-  subText: {
     fontSize: 30,
     color: white,
-    marginBottom: 160
+    marginBottom: 8
+  },
+  subText: {
+    fontSize: 15,
+    color: pink,
+    marginBottom: 40
   }
 });
 

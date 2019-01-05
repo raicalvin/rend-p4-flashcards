@@ -69,7 +69,7 @@ class AddCard extends Component {
             value={this.state.correctAnswerText}
           />
           <SubmitButton
-            style={styles.submitBtn}
+            style={styles.submitButton}
             onPress={() => this.submitCard(deckName)}
           />
         </View>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "#333"
   },
-  submitBtn: {
+  submitButton: {
     padding: 10,
     backgroundColor: blue,
     borderRadius: 22.5,
