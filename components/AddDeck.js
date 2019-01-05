@@ -3,6 +3,8 @@ import { StyleSheet, View, Text, Button, TextInput } from "react-native";
 import { saveDeckTitle } from "../utils/api";
 import { addDeck } from "../actions";
 import { connect } from "react-redux";
+import SubmitButton from "./SubmitButton";
+import { orange } from "../utils/colors";
 
 class AddDeck extends Component {
   // Keep track of the input name for the deck
@@ -28,11 +30,7 @@ class AddDeck extends Component {
           value={this.state.deckText}
           style={styles.input}
         />
-        <Button
-          onPress={this.submitDeckName}
-          title="Submit"
-          style={styles.submitBtn}
-        />
+        <SubmitButton style={styles.submitBtn} onPress={this.submitDeckName} />
       </View>
     );
   }
@@ -60,8 +58,9 @@ const styles = StyleSheet.create({
   },
   submitBtn: {
     borderWidth: 0.5,
-    borderColor: "#d6d7da",
+    borderColor: "#6d67da",
     padding: 10,
+    backgroundColor: orange,
     borderRadius: 7,
     overflow: "hidden"
   }

@@ -12,6 +12,7 @@ import {
   KeyboardAvoidingView,
   Text
 } from "react-native";
+import SubmitButton from "./SubmitButton";
 
 class AddCard extends Component {
   state = {
@@ -67,12 +68,10 @@ class AddCard extends Component {
             onChangeText={text => this.setState({ correctAnswerText: text })}
             value={this.state.correctAnswerText}
           />
-          <TouchableOpacity
+          <SubmitButton
             style={styles.submitBtn}
             onPress={() => this.submitCard(deckName)}
-          >
-            <Text style={styles.submitBtnText}>Submit!</Text>
-          </TouchableOpacity>
+          />
         </View>
       </KeyboardAvoidingView>
     );
