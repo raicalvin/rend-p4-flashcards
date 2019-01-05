@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavigationActions } from "react-navigation";
-import { orange, white, blue } from "../utils/colors";
+import { orange, white, blue, black } from "../utils/colors";
 import { addCardToDeck } from "../utils/api";
 import { connect } from "react-redux";
 import { addCard } from "../actions";
@@ -50,23 +50,17 @@ class AddCard extends Component {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View style={styles.container}>
-          <Text style={styles.title}>Question:</Text>
+          <Text style={styles.title}>Enter question:</Text>
           <TextInput
             style={styles.input}
             onChangeText={text => this.setState({ questionText: text })}
             value={this.state.questionText}
           />
-          <Text style={styles.title}>Answer:</Text>
+          <Text style={styles.title}>Enter answer:</Text>
           <TextInput
             style={styles.input}
             onChangeText={text => this.setState({ answerText: text })}
             value={this.state.answerText}
-          />
-          <Text style={styles.title}>True or False:</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={text => this.setState({ correctAnswerText: text })}
-            value={this.state.correctAnswerText}
           />
           <SubmitButton
             style={styles.submitButton}
@@ -90,8 +84,9 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   title: {
-    fontSize: 30,
-    color: "#333"
+    fontSize: 25,
+    color: black,
+    textAlign: "center"
   },
   submitButton: {
     padding: 10,
@@ -105,13 +100,12 @@ const styles = StyleSheet.create({
     color: white
   },
   input: {
-    width: 250,
-    height: 40,
+    width: 300,
+    height: 44,
     padding: 8,
     borderWidth: 1,
-    borderColor: "#757575",
-    margin: 20,
-    borderRadius: 7
+    margin: 25,
+    borderRadius: 30
   }
 });
 
