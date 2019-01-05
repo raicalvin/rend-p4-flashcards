@@ -17,6 +17,7 @@ import AddCard from "./components/AddCard";
 import { Constants } from "expo";
 import Quiz from "./components/Quiz";
 import { setLocalNotification } from "./utils/helpers";
+import InfoScreen from "./components/InfoScreen";
 
 /* STATUS BAR COMPONENT */
 function TopStatusBar({ backgroundColor, ...props }) {
