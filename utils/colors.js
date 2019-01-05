@@ -9,3 +9,4 @@ export const yellow = "#FFCB02";
 export const green = "#4CD965";
 export const teal = "#5AC8FA";
 export const purple = "#5857D6";
+export const black = "#191C1B";
