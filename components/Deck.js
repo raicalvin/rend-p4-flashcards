@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Animated } from "react-native";
 import { getInitialDecks } from "../utils/api";
 import { connect } from "react-redux";
 import MainButton from "./MainButton";
@@ -7,16 +7,32 @@ import { white, red, purple, blue, black, pink } from "../utils/colors";
 import { getCardsLength } from "../utils/helpers";
 
 class Deck extends Component {
+  state = {
+    opacity: new Animated.Value(0),
+    width: new Animated.Value(0),
+    height: new Animated.Value(0)
+  };
+
+  componentDidMount() {
+    const { opacity, height } = this.state;
+    Animated.timing(opacity, { toValue: 1, duration: 1000 }).start();
+    Animated.spring(height, { toValue: 30, speed: 5 }).start();
+  }
+
   render() {
     const deck = this.props.navigation.state.params.entryId;
     const { decks } = this.props;
     console.log("[Deck] The open Deck is: ", deck);
     const questions = decks[deck].questions;
 
+    const { opacity, height } = this.state;
+
     return (
       <View style={styles.container}>
         <View style={styles.card}>
-          <Text style={styles.mainText}>{decks[deck].name}</Text>
+          <Animated.Text style={[styles.mainText, { opacity, height }]}>
+            {decks[deck].name}
+          </Animated.Text>
           <Text style={styles.subText}>
             {questions ? getCardsLength(questions) : null}
           </Text>
