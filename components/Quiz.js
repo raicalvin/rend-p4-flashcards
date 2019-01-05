@@ -16,13 +16,44 @@ import QuizInfo from "./QuizInfo";
 class Quiz extends Component {
   state = {
     questionNumber: 0,
-    showQuestion: false
+    showQuestion: false,
+    correctAnswers: 0,
+    incorrectAnswer: 0
   };
 
   showAnswer = () =>
     !this.state.showQuestion
       ? this.setState({ showQuestion: true })
       : this.setState({ showQuestion: false });
+
+  submitAnswer = answer => {
+    // check if answer is correct
+    const { questionNumber } = this.state;
+    const deck = this.props.navigation.state.params.entryId;
+    const decks = this.props.decks;
+    // const correct = decks[deck].questions[questionNumber].answer;
+
+    // increment questionNumber
+
+    // show animation
+  };
+
+  markCorrect = () => {
+    this.setState({ correctAnswers: this.state.correctAnswers + 1 });
+    this.incrementQuestionNumber();
+  };
+
+  markIncorrect = () => {
+    this.setState({ incorrectAnswer: this.state.incorrectAnswer + 1 });
+    this.incrementQuestionNumber();
+  };
+
+  incrementQuestionNumber = () => {
+    this.setState({
+      questionNumber: this.state.questionNumber + 1,
+      showQuestion: false
+    });
+  };
 
   render() {
     const decks = this.props.decks;
@@ -60,8 +91,18 @@ class Quiz extends Component {
             />
           )}
 
-          <MainButton color={green} styles={styles} text="Correct" />
-          <MainButton color={red} styles={styles} text="Incorrect" />
+          <MainButton
+            color={green}
+            styles={styles}
+            text="Correct"
+            onPress={this.markCorrect}
+          />
+          <MainButton
+            color={red}
+            styles={styles}
+            text="Incorrect"
+            onPress={this.markIncorrect}
+          />
         </View>
       </View>
     );
