@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { NavigationActions } from "react-navigation";
-import { orange, white, blue, black } from "../utils/colors";
+import { white, blue, black } from "../utils/colors";
 import { addCardToDeck } from "../utils/api";
 import { connect } from "react-redux";
 import { addCard } from "../actions";
 import {
   StyleSheet,
   View,
-  TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
   Text
@@ -22,15 +21,8 @@ class AddCard extends Component {
   };
 
   submitCard = deck => {
-    console.log("This card will be added to this deck: ", deck);
     const { questionText, answerText, correctAnswerText } = this.state;
-    /*
-        We need to do four things:
-        1. Dispatch an action to add data to reducer
-        2. Add card to database
-        3. Set state back to empty strings
-        4. Navigate back
-      */
+
     this.props.dispatch(
       addCard({
         question: questionText,
@@ -39,14 +31,15 @@ class AddCard extends Component {
         deck
       })
     );
+
     addCardToDeck(deck, { questionText, answerText, correctAnswerText });
     this.setState({ questionText: "", answerText: "", correctAnswerText: "" });
     this.props.navigation.dispatch(NavigationActions.back({ key: null }));
   };
 
   render() {
-    console.log(this.state);
     const deckName = this.props.navigation.state.params.entryId;
+
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View style={styles.container}>
