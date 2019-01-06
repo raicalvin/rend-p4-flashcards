@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Animated } from "react-native";
-import { getInitialDecks } from "../utils/api";
 import { connect } from "react-redux";
 import MainButton from "./MainButton";
-import { white, red, purple, blue, black, pink } from "../utils/colors";
+import { white, red, blue, black, pink } from "../utils/colors";
 import { getCardsLength } from "../utils/helpers";
 
 class Deck extends Component {
@@ -22,7 +21,6 @@ class Deck extends Component {
   render() {
     const deck = this.props.navigation.state.params.entryId;
     const { decks } = this.props;
-    console.log("[Deck] The open Deck is: ", deck);
     const questions = decks[deck].questions;
 
     const { opacity, height } = this.state;

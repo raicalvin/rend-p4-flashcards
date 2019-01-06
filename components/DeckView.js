@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Button, ScrollView } from "react-native";
-import { getInitialDecks } from "../utils/api";
 import { connect } from "react-redux";
 import { getDecks } from "../utils/api";
 import { receiveDecks } from "../actions/index";
 import { AppLoading, Constants } from "expo";
-import { orange, white, purple, pink, black } from "../utils/colors";
-import { getCardsLength } from "../utils/helpers";
+import { white, pink, black } from "../utils/colors";
+import { formatCardLengthTitle } from "../utils/helpers";
 
 // This component displays the list of Decks
-
 class DeckView extends Component {
   state = {
     ready: false
@@ -26,10 +24,8 @@ class DeckView extends Component {
     if (!this.state.ready) {
       return <AppLoading />;
     }
-    // const decks = getInitialDecks();
+
     const { decks } = this.props;
-    console.log("[DeckView] The props are ", this.props);
-    console.log("[DeckView] The decks are ", decks);
 
     return (
       <ScrollView style={styles.container}>
@@ -39,7 +35,7 @@ class DeckView extends Component {
             <View key={deck} style={styles.card}>
               <Text style={styles.cardText}>{name}</Text>
               <Text style={styles.cardSubText}>
-                {questions ? getCardsLength(questions) : null}
+                {questions ? formatCardLengthTitle(questions) : null}
               </Text>
               <Button
                 onPress={() =>

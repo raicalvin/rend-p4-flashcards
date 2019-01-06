@@ -1,14 +1,3 @@
-/* TODO List
-
-    - Create initial data object for decks inside API
-    - Implement the API functions to store and export the data
-    - Import the decks into the DeckView
-    - Make the navigation components for adding deck, viewing decklist, and about section
-    - Style these initial components
-    - Hook up Redux so that we can add and delete decks
-    - AsyncStorage so that we can get initial decks or the decks that the user created
-*/
-
 import { AsyncStorage } from "react-native";
 
 // Key used to get the same data from the phone every time the app runs
@@ -89,7 +78,6 @@ const initialDecks = {
   }
 };
 
-// getData() in tut
 export const getInitialDecks = () => {
   return initialDecks;
 };

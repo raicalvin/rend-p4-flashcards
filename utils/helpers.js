@@ -1,12 +1,8 @@
 import React from "react";
-import { View, Text, AsyncStorage } from "react-native";
+import { Text, AsyncStorage } from "react-native";
 import { Notifications, Permissions } from "expo";
 
 const NOTIFICATION_KEY = "flashcards: decks";
-
-// setLocalNotiication
-// createNotification
-// clearLocalNotification
 
 function createNotification() {
   return {
@@ -49,7 +45,7 @@ export function clearLocalNotification() {
   );
 }
 
-export const getCardsLength = questions => {
+export const formatCardLengthTitle = questions => {
   if (questions.length === 0) {
     return <Text>( 0 Cards )</Text>;
   } else if (questions.length > 1) {

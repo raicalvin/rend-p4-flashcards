@@ -1,23 +1,7 @@
 import React, { Component } from "react";
 import { NavigationActions } from "react-navigation";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  KeyboardAvoidingView
-} from "react-native";
-import {
-  orange,
-  white,
-  purple,
-  red,
-  green,
-  blue,
-  black,
-  lightPurple
-} from "../utils/colors";
-import SubmitButton from "./SubmitButton";
+import { StyleSheet, Text, View } from "react-native";
+import { white, red, green, blue, black, lightPurple } from "../utils/colors";
 import { connect } from "react-redux";
 import MainButton from "./MainButton";
 import QuizInfo from "./QuizInfo";
@@ -34,18 +18,6 @@ class Quiz extends Component {
     !this.state.showQuestion
       ? this.setState({ showQuestion: true })
       : this.setState({ showQuestion: false });
-
-  submitAnswer = answer => {
-    // check if answer is correct
-    const { questionNumber } = this.state;
-    const deck = this.props.navigation.state.params.entryId;
-    const decks = this.props.decks;
-    // const correct = decks[deck].questions[questionNumber].answer;
-
-    // increment questionNumber
-
-    // show animation
-  };
 
   markCorrect = () => {
     this.setState({ correctAnswers: this.state.correctAnswers + 1 });
@@ -73,7 +45,7 @@ class Quiz extends Component {
     });
   };
 
-  home = () => {
+  goHome = () => {
     this.props.navigation.dispatch(NavigationActions.back({ key: null }));
   };
 
@@ -107,7 +79,7 @@ class Quiz extends Component {
               styles={styles}
               text="Home"
               color={green}
-              onPress={this.home}
+              onPress={this.goHome}
             />
           </View>
         </View>
