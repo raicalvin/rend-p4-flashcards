@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Animated } from "react-native";
 import { connect } from "react-redux";
 import MainButton from "./MainButton";
 import { white, red, blue, black, pink } from "../utils/colors";
-import { getCardsLength } from "../utils/helpers";
+import { formatCardLengthTitle } from "../utils/helpers";
 
 class Deck extends Component {
   state = {
@@ -32,7 +32,7 @@ class Deck extends Component {
             {decks[deck].name}
           </Animated.Text>
           <Text style={styles.subText}>
-            {questions ? getCardsLength(questions) : null}
+            {questions ? formatCardLengthTitle(questions) : null}
           </Text>
           <MainButton
             styles={styles}

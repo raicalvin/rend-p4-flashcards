@@ -94,7 +94,7 @@ const Stack = createStackNavigator({
     screen: AddCard,
     navigationOptions: {
       title: "New Question",
-      headerTintColor: white
+      headerTintColor: blue
     }
   },
   Quiz: {
