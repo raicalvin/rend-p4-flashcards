@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StatusBar } from "react-native";
+import { View, StatusBar } from "react-native";
 import {
   createBottomTabNavigator,
   createAppContainer,
@@ -8,16 +8,16 @@ import {
 import DeckView from "./components/DeckView";
 import AddDeck from "./components/AddDeck";
 import Deck from "./components/Deck";
-import { white, purple, blue, black } from "./utils/colors";
-import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import AddCard from "./components/AddCard";
+import Quiz from "./components/Quiz";
+import InfoScreen from "./components/InfoScreen";
+import { white, blue } from "./utils/colors";
+import { FontAwesome } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import reducer from "./reducers";
 import { createStore } from "redux";
-import AddCard from "./components/AddCard";
 import { Constants } from "expo";
-import Quiz from "./components/Quiz";
 import { setLocalNotification } from "./utils/helpers";
-import InfoScreen from "./components/InfoScreen";
 
 /* STATUS BAR COMPONENT */
 function TopStatusBar({ backgroundColor, ...props }) {
